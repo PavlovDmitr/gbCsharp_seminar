@@ -7,9 +7,5 @@
 int delitel = 10;
 int number = 0;
 Console.WriteLine("Введите трехзначное число:");
-do
-{
 number= int.Parse(Console.ReadLine());
 Console.WriteLine($"Вторая цифра числа {number}  - {(number/delitel)%delitel}");
-
-} while (number/1000 == 0);
