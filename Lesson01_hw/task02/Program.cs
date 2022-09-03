@@ -23,7 +23,7 @@ for (int i = 0; i < check.Count; i++)
 return true;
 }
 
-double maxInList(List<double> num)
+double MaxInList(List<double> num)
 {
     double max = num[0];
         for (int j =0; j<num.Count; j++)
@@ -54,7 +54,7 @@ do
     Console.WriteLine("Пробуем разобрать что написано...");
     if (CheckInsert(check))
     {   
-        double max = maxInList(num);                                    //Решение задачи 4
+        double max = MaxInList(num);                                    //Решение задачи 4
         Console.Write($"Максимально число равно {max} ");
 
         if (max % 2 == 0) Console.WriteLine($"и это число - четное");   //Решение задачи 6
