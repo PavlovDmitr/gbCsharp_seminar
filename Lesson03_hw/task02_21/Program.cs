@@ -5,21 +5,18 @@
 
 double[] ConvertStrToArray(string insStr)
 {
-    string[] allPointPositionStr = insStr.Split(' ');
+    char[] delimiterChar = {' ',',','.','(',')','[',']','/'};
+    string[] allPointPositionStr = insStr.Split(delimiterChar);
     double[] allPointPositionDigit = new double[] {0,0,0,0,0,0,0};
     int pointNum = 1;
     allPointPositionDigit[0] = 1;
     bool check = false;
     foreach (string point in allPointPositionStr)
     {
-        for (int i =0; i<=allPointPositionStr.Length; i++)
-        {
-            check = double.TryParse(point.Split(',')[i], out allPointPositionDigit[pointNum]);
-            if (!check) break;
-            pointNum++;
-        }
+        check = double.TryParse(point, out allPointPositionDigit[pointNum]);
         if (!check) break;
-        
+        pointNum++;
+                
     }
     if (check) return allPointPositionDigit;
     else  {allPointPositionDigit[0] = 0; return allPointPositionDigit;}

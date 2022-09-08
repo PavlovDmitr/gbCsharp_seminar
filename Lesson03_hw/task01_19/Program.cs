@@ -34,9 +34,9 @@ int minNumbCharacters = 9999;
 
 Console.WriteLine("Введите число для проверки:");
 bool checkNum = int.TryParse(Console.ReadLine(), out int num);
-while (!checkNum && num>minNumbCharacters)
+while (!checkNum || num<minNumbCharacters)
 {
-    Console.WriteLine("Введите число для проверки:");
+    Console.WriteLine("Введите правильное число для проверки:");
     checkNum = int.TryParse(Console.ReadLine(), out num);
 }
 int numOperations = num;
