@@ -8,8 +8,8 @@ double Exponentiation(double a, int b)
     double altA= a;
     for(int i=1;i<b;i++)
     a=a*altA;
-    Console.WriteLine($"согласно условию задания надо цикл рузультат вот - {a}");
-    return Math.Pow(altA,b);
+    //Console.WriteLine($"согласно условию задания надо цикл рузультат вот - {a}");
+    return a;
 }
 
 char[] delimiterChar = {' ',',','.','(',')','[',']','/'};
