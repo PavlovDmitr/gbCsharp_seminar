@@ -3,36 +3,31 @@
 // 82 -> 10
 // 9012 -> 12
 
-string exitWord = "NO";
-bool flag = true;
+
 int SumOfDigit(int numb)
-
 {
-
     int result = 0;
     while(numb>0)
     {
         result = result + numb%10;
         numb = numb/10;
     }
-
     return result;
 }
-
-while(flag)
+int num = 0;
+string insStr = "";
+string exitWord = "NO";
+bool checkInsNum = false;
+bool flagExit = true;
+while(flagExit) // просто бесконечная программа, есть ли какой то более удобный и правильный выход из такой программы? ну или может более правильное ее оформление?
 {
-    Console.WriteLine("Введите целое число для получения суммы цифр или введите NO для выхода:");
-    string insStr = Console.ReadLine();
-    if (insStr==exitWord) {flag = false; break;}
-    bool checkNum = int.TryParse(insStr, out int num);
-    
-    while (!checkNum)
+    do
     {
-        Console.WriteLine("Введите целое число для получения суммы цифр, но теперь правильно, или введите NO для выхода:");
+        Console.WriteLine("Введите целое число для получения суммы цифр, или введите NO для выхода:");
         insStr = Console.ReadLine();
-        if (insStr==exitWord) {flag = false; break;}
-        checkNum = int.TryParse(insStr, out num);
+        if (insStr==exitWord) {flagExit = false; break;}
+        checkInsNum = int.TryParse(insStr, out num);
     }
-
-    if(flag) Console.WriteLine($"{num} -> {SumOfDigit(num)}");
+    while (!checkInsNum);
+    if(flagExit) Console.WriteLine($"{num} -> {SumOfDigit(num)}");
 }
