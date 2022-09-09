@@ -1,7 +1,7 @@
 ﻿// Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
 // 3, 5 -> 243 (3⁵)
 // 2, 4 -> 16
-char[] delimiterChar = {' ',',','.','(',')','[',']','/'};
+
 
 double Exponentiation(double a, int b)
 {
@@ -12,7 +12,7 @@ double Exponentiation(double a, int b)
     return Math.Pow(altA,b);
 }
 
-
+char[] delimiterChar = {' ',',','.','(',')','[',']','/'};
 Console.WriteLine("Введите число для возведения в степень и степень через пробел:");
 string[] ins = Console.ReadLine().Split(delimiterChar);  
 bool checkNum1 = double.TryParse(ins[0], out double baseA);

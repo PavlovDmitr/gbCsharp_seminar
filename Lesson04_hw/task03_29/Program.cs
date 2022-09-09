@@ -2,10 +2,33 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-int[] CreateArrayMetod (int min, int max, int num)
+void FillArray(int[] collection)
 {
-    int[] result = new int[num];
-    for(int i=0;i<num;i++)
-    result[i] = new Random().Next(min, max+1);
-    return result;
+    int length = collection.Length;
+    int index = 0;
+    while (index<length)
+    {
+        collection[index] = new Random().Next(1,10);
+        index++;
+    }
 }
+
+void PrintArray(int[] col)
+{
+    int count = col.Length;
+    int position = 0;
+    Console.Write("[");
+    while (position<count)
+    {
+        //Console.Write($" {(position==0 ? col[position] : "," + col[position]) }" );
+
+        Console.Write((position==0 ? $"{col[position]}" : $", {col[position]}"));
+        position++;
+    }
+    Console.Write("]");
+}
+
+
+int[] array = new int[8];
+FillArray(array);
+PrintArray(array);
