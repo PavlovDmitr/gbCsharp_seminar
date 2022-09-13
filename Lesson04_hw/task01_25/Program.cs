@@ -13,10 +13,10 @@ double Exponentiation(double a, int b)
 
 char[] delimiterChar = {' ',',','.','(',')','[',']','/'};
 string[] ins = new string[] {"0","0","0","0","0"};  
-bool checkNum1 = false;
-bool checkNum2 = false;
 double baseA=0.0;
 int expB = 0;
+bool checkNum1 = false;
+bool checkNum2 = false;
 do
 {   // Console.WriteLine("постарался скукожить ввод с клавиатуры");
     Console.WriteLine("Введите число для возведения в степень и степень корректно(например \"6 5\" без кавычек):");
