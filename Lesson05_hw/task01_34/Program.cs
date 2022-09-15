@@ -14,11 +14,12 @@ int[] GetArray(int size, int minValue, int maxValue)
 void PrintArray(int[] resPA)
 {
     int size = resPA.Length;
+    Console.Write("[");
     for (int i = 0; i < size; i++)
     {
-        Console.Write($"{resPA[i]} ");
+        Console.Write(i != size-1 ? $"{resPA[i]}, ": $"{resPA[i]}");
     }
-    Console.WriteLine();
+    Console.Write("]");
 }
 
 int GetCountEvenNumbers(int[] resGCEN)
@@ -30,32 +31,32 @@ int GetCountEvenNumbers(int[] resGCEN)
     return count;
 }
 
-string l_content = @"Программа создает массив заданой длины 
+string descriptionApp = @"Программа создает массив заданой длины 
 случайными трехзначными числами и выводит
 кол-во четных чисел в этом массиве";
 int minValueArr = 100, maxValueArr = 999;
 
 Console.Clear();
-Console.WriteLine(l_content);
+Console.WriteLine(descriptionApp);
 Console.WriteLine();
 char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/' };
-string[] ins = new string[2];
-int[] array1 = new int[1];
-int baseA = 0;
-bool checkNum1 = false;
+string[] arrayStrings = new string[2];
+int[] arrayInt = new int[1];
+int arrayLenght = 0;
+bool checkParse = false;
 
 
 do
 {
     Console.WriteLine("Введите размер массива:");
-    ins = Console.ReadLine().Split(delimiterChar);
-    if (ins.Length < 1) continue;
-    checkNum1 = int.TryParse(ins[0], out baseA);
+    arrayStrings = Console.ReadLine().Split(delimiterChar);
+    if (arrayStrings.Length < 1) {continue;};
+    checkParse = int.TryParse(arrayStrings[0], out arrayLenght);
 }
-while (!checkNum1);
-array1 = GetArray(baseA, minValueArr, maxValueArr);
-Console.WriteLine("Массив сгенерировался такой:");
-PrintArray(array1);
-Console.WriteLine($"Кол-во четных чисел: {GetCountEvenNumbers(array1)}"); 
+while (!checkParse);
+arrayInt = GetArray(arrayLenght, minValueArr, maxValueArr);
+Console.WriteLine($"Массив размерности {arrayLenght} и результат:");
+PrintArray(arrayInt);
+Console.WriteLine($" -> {GetCountEvenNumbers(arrayInt)}"); 
 
 

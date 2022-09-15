@@ -15,11 +15,12 @@ double[] GetArray(int size, int minValue, int maxValue)
 void PrintArray(double[] resPA)
 {
     int size = resPA.Length;
+    Console.Write("[");
     for (int i = 0; i < size; i++)
     {
-        Console.Write($"{resPA[i]} ");
+        Console.Write(i != size-1 ? $"{resPA[i]}, ": $"{resPA[i]}");
     }
-    Console.WriteLine();
+    Console.Write("]");
 }
 
 double[] GetRoundArr(double[] resGCEN)
@@ -61,7 +62,7 @@ double GetNumberMax(double[] resGCEN)
 }
 
 
-string l_content =
+string descriptionApp =
 @"************************************************
 * Программа создает массив заданой длины       *
 * случайными числами и выводит разницу между   *
@@ -69,25 +70,26 @@ string l_content =
 ************************************************";
 int minValueArr = 1, maxValueArr = 10;
 Console.Clear();
-Console.WriteLine(l_content);
+Console.WriteLine(descriptionApp);
 Console.WriteLine();
 char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/' };
-string[] ins = new string[2];
-double[] array1 = new double[1];
-int baseA = 0;
-bool checkNum1 = false;
+string[] insArrayStrings = new string[2];
+double[] arrayDouble = new double[1];
+int arrayLenght = 0;
+bool checkParse = false;
 do
 {
     Console.WriteLine("Введите размер массива:");
-    ins = Console.ReadLine().Split(delimiterChar);
-    if (ins.Length < 1) continue;
-    checkNum1 = int.TryParse(ins[0], out baseA);
+    insArrayStrings = Console.ReadLine().Split(delimiterChar);
+    if (insArrayStrings.Length < 1) continue;
+    checkParse = int.TryParse(insArrayStrings[0], out arrayLenght);
 }
-while (!checkNum1);
-array1 = GetArray(baseA, minValueArr, maxValueArr);
+while (!checkParse);
+arrayDouble = GetArray(arrayLenght, minValueArr, maxValueArr);
 Console.WriteLine("Массив сгенерировался такой:");
-PrintArray(array1);
-array1 = GetRoundArr(array1);
-Console.WriteLine("Массив после сокращения части знаков после запятой такой:");
-PrintArray(array1);
-Console.WriteLine($"Разница между максимальным и минимальным элементов массива: {GetNumberMax(array1) - GetNumberMin(array1)}");
+PrintArray(arrayDouble);
+Console.WriteLine();
+arrayDouble = GetRoundArr(arrayDouble);
+Console.WriteLine("Массив после сокращения части знаков в элементах и результат работы программы:");
+PrintArray(arrayDouble);
+Console.WriteLine($"-> {Math.Round(GetNumberMax(arrayDouble) - GetNumberMin(arrayDouble),5)}");
