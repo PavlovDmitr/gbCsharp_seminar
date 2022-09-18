@@ -29,7 +29,7 @@ int[] GetConvertArray(int[] resGCEN)
     for (int i = 0; i < resGCEN.Length /2 ; i++)
         (resGCEN[i], resGCEN[resGCEN.Length-i-1]) = (resGCEN[resGCEN.Length-i-1], resGCEN[i]);
             count++;
-    return count;
+    return resGCEN;
 }
 
 string descriptionApp = @"Программа создает массив заданой длины 
@@ -57,8 +57,7 @@ while (!checkParse);
 arrayInt = GetArray(arrayLenght, minValueArr, maxValueArr);
 Console.WriteLine($"Массив размерности {arrayLenght} и результат:");
 PrintArray(arrayInt);
-Console.WriteLine($" -> {GetCountEvenNumbers(arrayInt)}"); 
-
+PrintArray(GetConvertArray(arrayInt));
 
 
 Console.Clear();
@@ -70,18 +69,6 @@ Console.WriteLine(String.Join(" ",reversArray));
 
 ReversArray1(array);
 Console.WriteLine(String.Join(" ",array));
-
-
-int [] GetArray(int size, int minValue, int maxValue)
-{
-    int [] res = new int[size];
-    for (int i = 0; i<size; i++)
-    {
-        res[i] = new Random().Next(minValue, maxValue+1);
-
-    }
-    return res;
-}
 
 void ReversArray1(int[] inArray)
 {
