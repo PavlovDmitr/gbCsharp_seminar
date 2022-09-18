@@ -83,11 +83,12 @@ Console.WriteLine(welcomText);
 do
 {
     var tuple = InsertUserDataDouble();
-    var result2 = CalcCrossPoint(tuple.Item2);
+    
     //Console.WriteLine(tuple.Item1);
     if (tuple.Item1 == false ) {  /*Console.WriteLine(tuple.Item1);*/ break;}
     if (tuple.Item1 == true) 
     {
+        var result2 = CalcCrossPoint(tuple.Item2);
         Console.Write("Результат вычислений: ");
         Console.WriteLine($"[{String.Join(", ", tuple.Item2)}] -> ({result2.Item1}, {result2.Item2})");
         Console.WriteLine("Введите следующую группу чисел(или quit для выхода): ");
