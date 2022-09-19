@@ -1,9 +1,6 @@
 ﻿// Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 // 0, 7, 8, -2, -2 -> 2
 // 1, -7, 567, 89, 223-> 3
-using System;
-
-    
 
 bool CheckInsert(bool[] check)
 {
@@ -16,13 +13,13 @@ bool CheckInsert(bool[] check)
 
 int CalcPosNumbers(double[] numbers)
 {
-    int result = 0;
-    foreach (double number in numbers)
-    {
-        if (number > 0)
-        result++;
-    }
-    return result;
+int result = 0;
+foreach (double number in numbers)
+{
+    if (number > 0)
+    result++;
+}
+return result;
 }
 
 string descriptionApp =
@@ -62,3 +59,9 @@ do
         Console.WriteLine($"Введите нормальные числа - для дробных чисел разделитель целой и дробной части в Windows запятая!");
     }
 } while (!(CheckInsert(checkParse)));
+
+
+
+
+
+
