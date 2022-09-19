@@ -35,16 +35,13 @@ Console.WriteLine(descriptionApp);
 Console.WriteLine();
 bool[] checkParse = new bool[1];
 double[] arrayDouble = new double[1];
-char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/'};
+char[] delimiterChar = { ' ', '.', '(', ')', '[', ']', '/'};
 string[]? insArrayStrings = new string[1];
 Console.WriteLine("Введите любое кол-во чисел через пробел:");
 
 do
 {
-    string? insStr = Console.ReadLine();
-    insStr = insStr?.Replace("    ", " ");
-    insStr = insStr?.Replace("   ", " ");
-    insStr = insStr?.Replace("  ", " ");
+    string? insStr = Console.ReadLine().Trim(delimiterChar);
     insArrayStrings = insStr?.Split(delimiterChar);
     int len = insArrayStrings.Length;
     arrayDouble = new double[len];

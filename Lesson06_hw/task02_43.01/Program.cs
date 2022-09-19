@@ -33,9 +33,9 @@ double[] ConverListToArray(List<double> inslist)
     do
     { 
     checkList.Clear();
-    string? insStr = Console.ReadLine();
+    numberList.Clear();
+    string? insStr = Console.ReadLine().Trim(delimiterChar);
     insArrayStrings = insStr?.Split(delimiterChar);
-    //Console.WriteLine(String.Join(", ", insArrayStrings));
     if(insArrayStrings[0].ToLower().Equals("quit") || insArrayStrings[0].ToLower() == "exit") {break; }
     if(insArrayStrings[0].ToLower().Equals("")) 
         {
@@ -44,11 +44,8 @@ double[] ConverListToArray(List<double> inslist)
     for (int i = 0; i < insArrayStrings.Length; i++)
     {
         checkParse = double.TryParse(insArrayStrings[i], out double nextNum);
-        //Console.WriteLine($"{checkParse} parse");
         checkList.Add(checkParse);
-        //Console.WriteLine($"{nextNum} num");
         numberList.Add(nextNum);
-
     }
     if (!CheckInsert(checkList)) Console.WriteLine($"Произвведите корректный ввод чисел (или quit для выхода)");
     }
@@ -74,23 +71,20 @@ string descriptionApp =
 string welcomText = @"Введите значения b1, k1, b2, k2
 quit - для выхода из программы.";
 
-//Console.Clear();
+Console.Clear();
 Console.WriteLine(descriptionApp);
 Console.WriteLine();
 Console.WriteLine(welcomText);
-//Console.WriteLine("Введите любое кол-во чисел через пробел,");
 
 do
 {
     var tuple = InsertUserDataDouble();
-    
-    //Console.WriteLine(tuple.Item1);
-    if (tuple.Item1 == false ) {  /*Console.WriteLine(tuple.Item1);*/ break;}
+    if (tuple.Item1 == false ) {break;}
     if (tuple.Item1 == true) 
     {
-        var result2 = CalcCrossPoint(tuple.Item2);
+        var result = CalcCrossPoint(tuple.Item2);
         Console.Write("Результат вычислений: ");
-        Console.WriteLine($"[{String.Join(", ", tuple.Item2)}] -> ({result2.Item1}, {result2.Item2})");
+        Console.WriteLine($"[{String.Join(", ", tuple.Item2)}] -> ({result.Item1}, {result.Item2})");
         Console.WriteLine("Введите следующую группу чисел(или quit для выхода): ");
     }
 }

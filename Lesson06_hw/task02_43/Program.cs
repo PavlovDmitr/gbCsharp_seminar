@@ -31,17 +31,14 @@ Console.WriteLine(descriptionApp);
 Console.WriteLine();
 bool[] checkParse = new bool[1];
 double[] arrayDouble = new double[1];
-char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/'};
+char[] delimiterChar = { ' ', ';', '.', '(', ')', '[', ']', '/'};
 string[]? insArrayStrings = new string[1];
 Console.WriteLine("Введите значения b1, k1, b2 и k2 через пробел:");
 
 do
-{
-    string? insStr = Console.ReadLine();
-    insStr = insStr?.Replace("    ", " ");
-    insStr = insStr?.Replace("   ", " ");
-    insStr = insStr?.Replace("  ", " ");
-    insArrayStrings = insStr?.Split(delimiterChar);
+{ 
+    //string? insStr= insStr?.
+    insArrayStrings = Console.ReadLine().Trim(delimiterChar).Split(delimiterChar);
     int len = insArrayStrings.Length;
     arrayDouble = new double[len];
     checkParse = new bool[len];

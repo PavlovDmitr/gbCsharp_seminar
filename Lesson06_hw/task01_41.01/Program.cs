@@ -35,7 +35,7 @@ double[] ConverListToArray(List<double> inslist)
 
 (bool, double[]) InsertUserDataDouble()
 {
-    char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/', '!', '?', ';',':'};
+    char[] delimiterChar = { ' ', '.', '(', ')', '[', ']', '/', '!', '?', ';',':'};
     string[]? insArrayStrings = new string[1];
     double[] arrayDouble = new double[1];
     bool checkParse = false;
@@ -44,22 +44,15 @@ double[] ConverListToArray(List<double> inslist)
     do
     { 
     checkList.Clear();
-    string? insStr = Console.ReadLine();
+    numberList.Clear();
+    string? insStr = Console.ReadLine().Trim(delimiterChar);
     insArrayStrings = insStr?.Split(delimiterChar);
-    //Console.WriteLine(String.Join(", ", insArrayStrings));
     if(insArrayStrings[0].ToLower().Equals("quit") || insArrayStrings[0].ToLower() == "exit") {break; }
-    if(insArrayStrings[0].ToLower().Equals("")) 
-        {
-            Console.WriteLine($"Ошибка ввода, ввод необходимо начинать с числа");
-        }
     for (int i = 0; i < insArrayStrings.Length; i++)
     {
         checkParse = double.TryParse(insArrayStrings[i], out double nextNum);
-        //Console.WriteLine($"{checkParse} parse");
         checkList.Add(checkParse);
-        //Console.WriteLine($"{nextNum} num");
         numberList.Add(nextNum);
-
     }
     if (!CheckInsert(checkList)) Console.WriteLine($"Произвведите корректный ввод чисел (или quit для выхода)");
     }
@@ -73,21 +66,18 @@ string descriptionApp =
 * Программа производит подсчет кол-ва          *
 * введнных пользователем положительных чисел   *
 ************************************************";
-string welcomText = @"Введите числа для подсчета или
-quit - для выхода из программы.
-разделителем между числами может быть пробел, запятая, точка.";
+string welcomText = @"Введите числа через пробел для подсчета или
+quit - для выхода из программы.";
 
-//Console.Clear();
+Console.Clear();
 Console.WriteLine(descriptionApp);
 Console.WriteLine();
 Console.WriteLine(welcomText);
-//Console.WriteLine("Введите любое кол-во чисел через пробел,");
 
 do
 {
     var tuple = InsertUserDataDouble();
-    //Console.WriteLine(tuple.Item1);
-    if (tuple.Item1 == false ) {  /*Console.WriteLine(tuple.Item1);*/ break;}
+    if (tuple.Item1 == false ) {break;}
     if (tuple.Item1 == true)
     {
         Console.Write("Кол-во введенных положительных чисел -> ");
