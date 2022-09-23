@@ -11,10 +11,10 @@ bool CheckInsert(List<bool> check)
     return true;
 }
 
-double[] ConverListToArray(List<double> inslist)
+double[] ConvertListToArray(List<double> inslist)
 {
     int count = inslist.Count;
-    double[] arr = new double[count+1];
+    double[] arr = new double[count];
     for(int i= 0; i<count; i++)
     {
         arr[i] = Convert.ToDouble( inslist[i] );
@@ -22,12 +22,13 @@ double[] ConverListToArray(List<double> inslist)
     return arr;
 }
 
-(bool, double[]) InsertUserDataDouble()
+(bool, double[]) GetUserDataDouble()
 {
     char[] delimiterChar = { ' ', ',', '.', '(', ')', '[', ']', '/' };
     string[]? insArrayStrings = new string[1];
     double[] arrayDouble = new double[1];
     bool checkParse = false;
+    int allCoefficientsCount = 4;
     List<double> numberList = new List<double> { };
     List<bool> checkList = new List<bool> { };
     do
@@ -47,11 +48,11 @@ double[] ConverListToArray(List<double> inslist)
         checkList.Add(checkParse);
         numberList.Add(nextNum);
     }
-    if (!CheckInsert(checkList)) Console.WriteLine($"Произвведите корректный ввод чисел (или quit для выхода)");
+    if (!CheckInsert(checkList)|| checkList.Count != allCoefficientsCount) Console.WriteLine($"Произвведите корректный ввод чисел (или quit для выхода)");
     }
-    while (!CheckInsert(checkList));
-    if (insArrayStrings[0].ToLower() == "quit" || insArrayStrings[0].ToLower() == "exit") return (false, ConverListToArray(numberList));
-    else return (true, ConverListToArray(numberList));
+    while (!CheckInsert(checkList) || checkList.Count != allCoefficientsCount);
+    if (insArrayStrings[0].ToLower() == "quit" || insArrayStrings[0].ToLower() == "exit") return (false, ConvertListToArray(numberList));
+    else return (true, ConvertListToArray(numberList));
 }
 
 (double, double) CalcCrossPoint(double[] userArray)
@@ -65,8 +66,9 @@ double[] ConverListToArray(List<double> inslist)
 
 string descriptionApp =
 @"************************************************
-* Программа находит точку пересечения двух 
-* прямых,заданных уравнениями y = k1 * x + b1, y = k2 * x + b2  *
+* Программа находит точку пересечения двух     *
+* прямых,заданных уравнениями                  *
+* y = k1 * x + b1, y = k2 * x + b2             *
 ************************************************";
 string welcomText = @"Введите значения b1, k1, b2, k2
 quit - для выхода из программы.";
@@ -78,14 +80,15 @@ Console.WriteLine(welcomText);
 
 do
 {
-    var tuple = InsertUserDataDouble();
-    if (tuple.Item1 == false ) {break;}
-    if (tuple.Item1 == true) 
+    var userData = GetUserDataDouble();
+    if (userData.Item1 == false ) {break;}
+    //if (userData.Item2[1] != userData.Item2[3]) 
     {
-        var result = CalcCrossPoint(tuple.Item2);
+        var result = CalcCrossPoint(userData.Item2);
         Console.Write("Результат вычислений: ");
-        Console.WriteLine($"[{String.Join(", ", tuple.Item2)}] -> ({result.Item1}, {result.Item2})");
+        Console.WriteLine($"[{String.Join(", ", userData.Item2)}] -> ({result.Item1}, {result.Item2})");
         Console.WriteLine("Введите следующую группу чисел(или quit для выхода): ");
     }
+    //else Console.WriteLine(userData.Item2[0] == userData.Item2[2] ? $"введены параметры для одной прямой" : $"введены параметры для параллельных прямых");
 }
 while (true);

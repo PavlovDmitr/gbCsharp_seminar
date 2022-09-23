@@ -32,6 +32,7 @@ namespace task01_41 // Note: actual namespace depends on the project name.
             }
             return result;
         }
+        
         static void Main(string[] args)
         {
             Console.Clear();
