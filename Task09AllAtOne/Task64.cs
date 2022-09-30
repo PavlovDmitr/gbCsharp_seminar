@@ -33,7 +33,7 @@ namespace Task09AllAtOne
                 if (tuple.Item1 == true)
                 {
                     Console.Write($"Четные числа от {tuple.Item2[0]} до 1: ");
-                    Console.Write($" {RecurFromNumToOne(Convert.ToInt32(tuple.Item2[0]))}");
+                    Console.Write($"{RecurFromNumToOne(Convert.ToInt32(tuple.Item2[0]))}");
                     Console.WriteLine();
                     Console.WriteLine("Введите параметры для следующего расчета(или quit для выхода): ");
                 }
